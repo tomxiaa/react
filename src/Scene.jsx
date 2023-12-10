@@ -8,50 +8,50 @@ import {
   Environment,
   PivotControls,
 } from "@react-three/drei";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, forwardRef, useImperativeHandle } from "react";
 import { useControls } from "leva";
 
 import AnimatedCamera from "./AnimatedCamera";
 import OrangeAnimatedHighlight from "./OrangeAnimatedHighlight";
 import BlueAnimatedHighlight from "./BlueAnimatedHighlight";
 
-function Scene() {
+function Scene({ boxRef }) {
   return (
     <div id="canvas_wrapper">
-      <Canvas shadows camera={{ position: [-3, 0.5, 3] }}>
-        <PivotControls anchor={[-1.1, -1.1, -1.1]} scale={0.75} lineWidth={3.5}>
-          <mesh castShadow receiveShadow>
-            <boxGeometry args={[2, 2, 2]} />
-            <Edges />
-            <Side rotation={[0, 0, 0]} bg="orange" index={0}>
-              <torusGeometry args={[0.65, 0.3, 64]} />
-            </Side>
-            <Side rotation={[0, Math.PI, 0]} bg="lightblue" index={1}>
-              <torusKnotGeometry args={[0.55, 0.2, 128, 32]} />
-            </Side>
-            <Side
-              rotation={[0, Math.PI / 2, Math.PI / 2]}
-              bg="lightgreen"
-              index={2}
-            >
-              <boxGeometry args={[1.15, 1.15, 1.15]} />
-            </Side>
-            <Side
-              rotation={[0, Math.PI / 2, -Math.PI / 2]}
-              bg="aquamarine"
-              index={3}
-            >
-              <octahedronGeometry />
-            </Side>
-            <Side rotation={[0, -Math.PI / 2, 0]} bg="indianred" index={4}>
-              <icosahedronGeometry />
-            </Side>
-            <Side rotation={[0, Math.PI / 2, 0]} bg="hotpink" index={5}>
-              <dodecahedronGeometry />
-            </Side>
-          </mesh>
-        </PivotControls>
-        <CameraControls makeDefault />
+      <Canvas shadows camera={{ position: [-3, 0, 3] }}>
+        {/* <PivotControls anchor={[-1.1, -1.1, -1.1]} scale={0.75} lineWidth={3.5}> */}
+        <mesh ref={boxRef} castShadow receiveShadow>
+          <boxGeometry args={[2, 2, 2]} />
+          <Edges />
+          <Side rotation={[0, 0, 0]} bg="orange" index={0}>
+            <torusGeometry args={[0.65, 0.3, 64]} />
+          </Side>
+          <Side rotation={[0, Math.PI, 0]} bg="lightblue" index={1}>
+            <torusKnotGeometry args={[0.55, 0.2, 128, 32]} />
+          </Side>
+          <Side
+            rotation={[0, Math.PI / 2, Math.PI / 2]}
+            bg="lightgreen"
+            index={2}
+          >
+            <boxGeometry args={[1.15, 1.15, 1.15]} />
+          </Side>
+          <Side
+            rotation={[0, Math.PI / 2, -Math.PI / 2]}
+            bg="aquamarine"
+            index={3}
+          >
+            <octahedronGeometry />
+          </Side>
+          <Side rotation={[0, -Math.PI / 2, 0]} bg="indianred" index={4}>
+            <icosahedronGeometry />
+          </Side>
+          <Side rotation={[0, Math.PI / 2, 0]} bg="hotpink" index={5}>
+            <dodecahedronGeometry />
+          </Side>
+        </mesh>
+        {/* </PivotControls> */}
+        {/* <CameraControls makeDefault /> */}
       </Canvas>
     </div>
   );
@@ -105,4 +105,4 @@ function Side({ rotation = [0, 0, 0], bg = "#f0f0f0", children, index }) {
   );
 }
 
-export default Scene;
+export default forwardRef(Scene);
