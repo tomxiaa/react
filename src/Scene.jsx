@@ -30,7 +30,7 @@ function ModelA() {
     <primitive
       object={gltf.scene}
       scale={[0.6, 0.6, 0.6]}
-      position={[0, -0.95, 0]}
+      position={[0.1, -0.96, 0]}
       rotation={[0, Math.PI * 1.5, 0]}
     />
   );
@@ -45,7 +45,7 @@ function ModelB() {
       object={gltf.scene}
       scale={[0.6, 0.6, 0.6]}
       position={[0, -1, 0]}
-      rotation={[0, Math.PI, 0]}
+      rotation={[0, -Math.PI * 1.5, 0]}
     />
   );
 }
