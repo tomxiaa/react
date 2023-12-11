@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollProgress = getScrollProgress();
-      const rotationY = scrollProgress * 270; // 270 degrees at max scroll
+      const rotationY = scrollProgress * 180; // 270 degrees at max scroll
       if (boxRef.current) {
         boxRef.current.rotation.y = rotationY * (Math.PI / 180); // Convert to radians
       }
