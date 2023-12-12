@@ -4,7 +4,6 @@ import {
   useGLTF,
   Edges,
   MeshPortalMaterial,
-  MeshDistortMaterial,
   CameraControls,
   Environment,
   PivotControls,
@@ -24,13 +23,13 @@ import BlueAnimatedHighlight from "./BlueAnimatedHighlight";
 
 function ModelA() {
   const gltf = useGLTF(
-    "https://cdn.glitch.global/af9365bb-7251-4a5a-ad93-30532c14e16c/bedroom.glb?v=1702071917890",
+    "https://cdn.glitch.global/af9365bb-7251-4a5a-ad93-30532c14e16c/bedroom3.glb?v=1702327929087",
   );
   return (
     <primitive
       object={gltf.scene}
       scale={[0.6, 0.6, 0.6]}
-      position={[0, -0.95, 0]}
+      position={[0.1, -1.1, 0]}
       rotation={[0, Math.PI * 1.5, 0]}
     />
   );
@@ -38,21 +37,21 @@ function ModelA() {
 
 function ModelB() {
   const gltf = useGLTF(
-    "https://cdn.glitch.global/af9365bb-7251-4a5a-ad93-30532c14e16c/living.glb?v=1702259991354",
+    "https://cdn.glitch.global/af9365bb-7251-4a5a-ad93-30532c14e16c/living3.glb?v=1702327928667",
   );
   return (
     <primitive
       object={gltf.scene}
       scale={[0.6, 0.6, 0.6]}
-      position={[0, -1, 0]}
-      rotation={[0, Math.PI, 0]}
+      position={[0, -1.1, 0]}
+      rotation={[0, -Math.PI * 1.5, 0]}
     />
   );
 }
 
 function ModelC() {
   const gltf = useGLTF(
-    "https://cdn.glitch.global/af9365bb-7251-4a5a-ad93-30532c14e16c/kitchen.glb?v=1702259987910",
+    "https://cdn.glitch.global/af9365bb-7251-4a5a-ad93-30532c14e16c/kitchen3.glb?v=1702327929339",
   );
   return (
     <primitive
@@ -67,11 +66,12 @@ function ModelC() {
 function Scene({ boxRef }) {
   return (
     <div id="canvas_wrapper">
-      <Canvas shadows camera={{ position: [0, 0, 3] }}>
+      <Canvas shadows camera={{ position: [0, 0, 1.5] }}>
+        <AnimatedCamera />
         {/* <PivotControls anchor={[-1.1, -1.1, -1.1]} scale={0.75} lineWidth={3.5}> */}
         <mesh ref={boxRef} castShadow receiveShadow>
           <boxGeometry args={[2, 2, 2]} />
-          <Edges />
+          {/* <Edges /> */}
 
           <Side rotation={[0, 0, 0]} bg="orange" index={0}>
             <torusGeometry args={[0.65, 0.3, 64]} />
