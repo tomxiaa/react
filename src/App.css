@@ -6,7 +6,7 @@ body {
 #article_wrapper {
   position: relative;
   background-color: grey;
-  height: 9000px; /* Length of the interactive scroll article */
+  height: 5000px; /* Length of the interactive scroll article */
 }
 
 #canvas_wrapper {

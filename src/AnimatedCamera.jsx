@@ -15,9 +15,18 @@ function AnimatedCamera() {
         y: 0,
         z: 0,
       },
-      "intro"
+      "intro",
     );
-      
+
+    AnimationTimeline.to(
+      cameraRef.current.position,
+      {
+        x: 0,
+        y: 10,
+        z: 0,
+      },
+      "middle",
+    );
 
     AnimationTimeline.to(
       cameraRef.current.position,
@@ -26,7 +35,7 @@ function AnimatedCamera() {
         y: 0,
         z: 0,
       },
-      "middle"
+      "outro",
     );
 
     AnimationTimeline.to(
@@ -36,14 +45,66 @@ function AnimatedCamera() {
         y: 0,
         z: 0,
       },
-      "outro"
+      "outro1",
     );
+    AnimationTimeline.to(
+      cameraRef.current.position,
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
+      "outro2",
+    );
+    // AnimationTimeline.to(
+    //   cameraRef.current.position,
+    //   {
+    //     x: 0,
+    //     y: 0,
+    //     z: 0,
+    //   },
+    //   "outro3",
+    // );
+    // AnimationTimeline.to(
+    //   cameraRef.current.position,
+    //   {
+    //     x: 0,
+    //     y: 0,
+    //     z: 0,
+    //   },
+    //   "outro4",
+    // );
+    // AnimationTimeline.to(
+    //   cameraRef.current.position,
+    //   {
+    //     x: 0,
+    //     y: 0,
+    //     z: 0,
+    //   },
+    //   "outro5",
+    // );
+    // AnimationTimeline.to(
+    //   cameraRef.current.position,
+    //   {
+    //     x: 0,
+    //     y: 0,
+    //     z: 0,
+    //   },
+    //   "outro6",
+    // );
+    // AnimationTimeline.to(
+    //   cameraRef.current.position,
+    //   {
+    //     x: 0,
+    //     y: 0,
+    //     z: 0,
+    //   },
+    //   "outro7",
+    // );
 
     return () => CameraTimeline.kill();
   }, []);
-  return (
-    <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 5]} />
-  );
+  return <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 3]} />;
 }
 
 export default AnimatedCamera;
