@@ -2,9 +2,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { BackSide } from "three";
 import {
   useGLTF,
-  Edges,
   MeshPortalMaterial,
-  CameraControls,
   Environment,
   PivotControls,
 } from "@react-three/drei";
@@ -37,7 +35,7 @@ function ModelA() {
 
 function ModelB() {
   const gltf = useGLTF(
-    "https://cdn.glitch.global/af9365bb-7251-4a5a-ad93-30532c14e16c/living3.glb?v=1702327928667",
+    "https://cdn.glitch.global/af9365bb-7251-4a5a-ad93-30532c14e16c/living4.glb?v=1702407612518",
   );
   return (
     <primitive
@@ -51,14 +49,14 @@ function ModelB() {
 
 function ModelC() {
   const gltf = useGLTF(
-    "https://cdn.glitch.global/af9365bb-7251-4a5a-ad93-30532c14e16c/kitchen3.glb?v=1702327929339",
+    "https://cdn.glitch.global/af9365bb-7251-4a5a-ad93-30532c14e16c/kitchen4.glb?v=1702406258444",
   );
   return (
     <primitive
       object={gltf.scene}
       scale={[0.55, 0.55, 0.55]}
-      position={[0, -1, 0]}
-      rotation={[0, Math.PI * 2, 0]}
+      position={[0, -1, 0.5]}
+      rotation={[0, Math.PI, 0]}
     />
   );
 }
@@ -97,11 +95,11 @@ function Scene({ boxRef }) {
             <torusGeometry args={[0.65, 0.3, 64]} />
           </Side>
 
-          <Side rotation={[0, -Math.PI / 2, 0]} bg="indianred" index={4}>
+          <Side rotation={[0, -Math.PI / 2, 0]} bg="orange" index={4}>
             <ModelA />
           </Side>
 
-          <Side rotation={[0, Math.PI / 2, 0]} bg="hotpink" index={5}>
+          <Side rotation={[0, Math.PI / 2, 0]} bg="lightgreen" index={5}>
             <ModelC />
           </Side>
         </mesh>
@@ -126,7 +124,7 @@ function Side({ rotation = [0, 0, 0], bg = "#f0f0f0", children, index }) {
   return (
     <MeshPortalMaterial worldUnits={worldUnits} attach={`material-${index}`}>
       {/** Everything in here is inside the portal and isolated from the canvas */}
-      <ambientLight intensity={3} />
+      <ambientLight intensity={1} />
       <Environment preset="city" />
       {/** A box with baked AO */}
       <mesh
@@ -136,7 +134,7 @@ function Side({ rotation = [0, 0, 0], bg = "#f0f0f0", children, index }) {
         geometry={nodes.Cube.geometry}
       >
         <meshStandardMaterial
-          aoMapIntensity={1}
+          aoMapIntensity={0.85}
           aoMap={nodes.Cube.material.aoMap}
           color={bg}
         />

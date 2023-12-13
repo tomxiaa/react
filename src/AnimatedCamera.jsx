@@ -56,51 +56,51 @@ function AnimatedCamera() {
       },
       "outro2",
     );
-    // AnimationTimeline.to(
-    //   cameraRef.current.position,
-    //   {
-    //     x: 0,
-    //     y: 0,
-    //     z: 0,
-    //   },
-    //   "outro3",
-    // );
-    // AnimationTimeline.to(
-    //   cameraRef.current.position,
-    //   {
-    //     x: 0,
-    //     y: 0,
-    //     z: 0,
-    //   },
-    //   "outro4",
-    // );
-    // AnimationTimeline.to(
-    //   cameraRef.current.position,
-    //   {
-    //     x: 0,
-    //     y: 0,
-    //     z: 0,
-    //   },
-    //   "outro5",
-    // );
-    // AnimationTimeline.to(
-    //   cameraRef.current.position,
-    //   {
-    //     x: 0,
-    //     y: 0,
-    //     z: 0,
-    //   },
-    //   "outro6",
-    // );
-    // AnimationTimeline.to(
-    //   cameraRef.current.position,
-    //   {
-    //     x: 0,
-    //     y: 0,
-    //     z: 0,
-    //   },
-    //   "outro7",
-    // );
+    AnimationTimeline.to(
+      cameraRef.current.position,
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
+      "outro3",
+    );
+    AnimationTimeline.to(
+      cameraRef.current.position,
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
+      "outro4",
+    );
+    AnimationTimeline.to(
+      cameraRef.current.position,
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
+      "outro5",
+    );
+    AnimationTimeline.to(
+      cameraRef.current.position,
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
+      "outro6",
+    );
+    AnimationTimeline.to(
+      cameraRef.current.position,
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
+      "outro7",
+    );
 
     return () => CameraTimeline.kill();
   }, []);
