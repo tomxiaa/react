@@ -21,7 +21,7 @@ function getScrollProgress() {
 function App() {
   const boxRef = useRef();
   //assuming the news content section is 100vh in height
-  const newsContentHeight = window.innerHeight * 3; // or a specific pixel value
+  const newsContentHeight = window.innerHeight * 4; // or a specific pixel value
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,28 +44,6 @@ function App() {
         }
       }
     };
-
-    // useEffect(() => {
-    //   const handleScroll = () => {
-    //     const scrollProgress = getScrollProgress();
-    //     const rotationY = scrollProgress * 180; // 270 degrees at max scroll
-
-    //     // if (boxRef.current && scrollProgress < 0.055) {
-    //     //   boxRef.current.rotation.y = rotationY * (Math.PI / 180);
-    //     //   boxRef.current.position.z = scrollProgress * 10; // Convert to radians
-    //     // }
-    //     // // else if (
-    //     // //   boxRef.current &&
-    //     // //   scrollProgress > 0.45 &&
-    //     // //   scrollProgress < 0.55
-    //     // // ) {
-    //     // //   boxRef.current.rotation.y = rotationY * (Math.PI / 180);
-    //     // //   boxRef.current.position.z = scrollProgress * -5;
-    //     // // }
-    //     // else {
-    //     boxRef.current.rotation.y = rotationY * (Math.PI / 180); // Convert to radians
-    //     // }
-    //   };
 
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -109,7 +87,7 @@ function App() {
           <h2 className="section1-header">An Ed-Tech Tragedy?</h2>
           <p className="section1-content">
             In early 2020, as the coronavirus spread, schools around the world
-            abruptly halted in-person education. 
+            abruptly halted in-person education.
           </p>
         </div>
       </section>
@@ -137,7 +115,7 @@ function App() {
             The global scale of the issue is immense, with 1.6 billion children
             impacted by pandemic-era school shutdowns. Schools were closed for a
             global average of 95 days during the first year of the pandemic,
-            essentially half a school year, according to UNICEF. 
+            essentially half a school year, according to UNICEF.
           </p>
           <img
             src="https://i.postimg.cc/258sf8sy/1-6billion.png"
@@ -185,7 +163,7 @@ function App() {
           />
           <p className="section1-content">
             While necessary for safety, online learning hindered discussions of
-            more equitable, lower-tech alternatives. 
+            more equitable, lower-tech alternatives.
           </p>
         </div>
       </section>
