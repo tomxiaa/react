@@ -21,23 +21,28 @@ function getScrollProgress() {
 function App() {
   const boxRef = useRef();
   //assuming the news content section is 100vh in height
-  const newsContentHeight = window.innerHeight * 3; // or a specific pixel value
+  const sectionsRef = useRef([]);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const scrollProgress = getScrollProgress();
 
-      // Check if the scroll position is past the news content section
-      if (scrollY > newsContentHeight) {
-        // Adjust scrollProgress to start from 0 after the news content
+      // Dynamically calculate the total height of all sections before the 3D scene
+      const newContentHeight = sectionsRef.current.reduce(
+        (totalHeight, section) => {
+          return totalHeight + section.offsetHeight;
+        },
+        0,
+      );
+
+      // Check if the scroll position is past all the content sections above the 3D scene
+      if (scrollY > newContentHeight) {
+        // Adjust scrollProgress to start from 0 after the content above the 3D scene
         const adjustedScrollProgress =
-          (scrollY - newsContentHeight) /
+          (scrollY - newContentHeight) /
           (document.documentElement.scrollHeight -
-            newsContentHeight -
+            newContentHeight -
             window.innerHeight);
-
-        // Now use the adjustedScrollProgress for rotation
         const rotationY = adjustedScrollProgress * 180; // or whatever your maximum rotation is
         if (boxRef.current) {
           boxRef.current.rotation.y = rotationY * (Math.PI / 180); // Convert to radians
@@ -45,33 +50,16 @@ function App() {
       }
     };
 
-    // useEffect(() => {
-    //   const handleScroll = () => {
-    //     const scrollProgress = getScrollProgress();
-    //     const rotationY = scrollProgress * 180; // 270 degrees at max scroll
-
-    //     // if (boxRef.current && scrollProgress < 0.055) {
-    //     //   boxRef.current.rotation.y = rotationY * (Math.PI / 180);
-    //     //   boxRef.current.position.z = scrollProgress * 10; // Convert to radians
-    //     // }
-    //     // // else if (
-    //     // //   boxRef.current &&
-    //     // //   scrollProgress > 0.45 &&
-    //     // //   scrollProgress < 0.55
-    //     // // ) {
-    //     // //   boxRef.current.rotation.y = rotationY * (Math.PI / 180);
-    //     // //   boxRef.current.position.z = scrollProgress * -5;
-    //     // // }
-    //     // else {
-    //     boxRef.current.rotation.y = rotationY * (Math.PI / 180); // Convert to radians
-    //     // }
-    //   };
-
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Add each section to the refs array for later height calculation
+  const addToRefs = (el) => {
+    if (el && !sectionsRef.current.includes(el)) {
+      sectionsRef.current.push(el);
+    }
+  };
 
   return (
     <div id="article_wrapper">
