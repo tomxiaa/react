@@ -21,28 +21,23 @@ function getScrollProgress() {
 function App() {
   const boxRef = useRef();
   //assuming the news content section is 100vh in height
-  const sectionsRef = useRef([]);
+  const newsContentHeight = window.innerHeight * 4; // or a specific pixel value
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
+      const scrollProgress = getScrollProgress();
 
-      // Dynamically calculate the total height of all sections before the 3D scene
-      const newContentHeight = sectionsRef.current.reduce(
-        (totalHeight, section) => {
-          return totalHeight + section.offsetHeight;
-        },
-        0,
-      );
-
-      // Check if the scroll position is past all the content sections above the 3D scene
-      if (scrollY > newContentHeight) {
-        // Adjust scrollProgress to start from 0 after the content above the 3D scene
+      // Check if the scroll position is past the news content section
+      if (scrollY > newsContentHeight) {
+        // Adjust scrollProgress to start from 0 after the news content
         const adjustedScrollProgress =
-          (scrollY - newContentHeight) /
+          (scrollY - newsContentHeight) /
           (document.documentElement.scrollHeight -
-            newContentHeight -
+            newsContentHeight -
             window.innerHeight);
+
+        // Now use the adjustedScrollProgress for rotation
         const rotationY = adjustedScrollProgress * 180; // or whatever your maximum rotation is
         if (boxRef.current) {
           boxRef.current.rotation.y = rotationY * (Math.PI / 180); // Convert to radians
@@ -51,15 +46,10 @@ function App() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
-
-  // Add each section to the refs array for later height calculation
-  const addToRefs = (el) => {
-    if (el && !sectionsRef.current.includes(el)) {
-      sectionsRef.current.push(el);
-    }
-  };
 
   return (
     <div id="article_wrapper">
@@ -97,7 +87,7 @@ function App() {
           <h2 className="section1-header">An Ed-Tech Tragedy?</h2>
           <p className="section1-content">
             In early 2020, as the coronavirus spread, schools around the world
-            abruptly halted in-person education. 
+            abruptly halted in-person education.
           </p>
         </div>
       </section>
@@ -125,7 +115,7 @@ function App() {
             The global scale of the issue is immense, with 1.6 billion children
             impacted by pandemic-era school shutdowns. Schools were closed for a
             global average of 95 days during the first year of the pandemic,
-            essentially half a school year, according to UNICEF. 
+            essentially half a school year, according to UNICEF.
           </p>
           <img
             src="https://i.postimg.cc/258sf8sy/1-6billion.png"
@@ -173,7 +163,7 @@ function App() {
           />
           <p className="section1-content">
             While necessary for safety, online learning hindered discussions of
-            more equitable, lower-tech alternatives. 
+            more equitable, lower-tech alternatives.
           </p>
         </div>
       </section>
