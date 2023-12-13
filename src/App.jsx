@@ -190,6 +190,22 @@ function App() {
         </div>
       </section>
 
+      {/* SECTION-07: */}
+      <section>
+        <div className="section-2">
+          <p className="left-text">
+            Researchers recommended regularly providing schoolwork packets for
+            every student, delivering school lessons through radio or
+            television, and reopening schools sooner for in-person classes.
+          </p>
+          <img
+            src="https://i.postimg.cc/KYJcBYSh/radio.png"
+            alt="radio wifi icon"
+            className="right-icon"
+          />
+        </div>
+      </section>
+
       {/* 3D scene container */}
       <div id="canvas_wrapper">
         <Scene boxRef={boxRef} />
