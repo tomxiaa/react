@@ -186,7 +186,7 @@ function App() {
 
       {/* SECTION-08: */}
 
-      <section className="news-header">
+      <section className="section-1">
         <img
           src="https://echo360.com/wp-content/uploads/2022/04/61aa7aa060dc17c03b92a0e9_iStock-1213470247-scaled.jpg"
           alt="remote learning"
