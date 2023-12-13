@@ -6,7 +6,7 @@ function SimpleSlide(props) {
         color: "white",
         position: "absolute",
         minWidth: "45vw",
-        paddingLeft: "350px", // To offset slides a tiny bit from the left side of the screen
+        paddingLeft: "355px", // To offset slides a tiny bit from the left side of the screen
         top: `${viewportPosition}vh`,
         zIndex: "50",
       }}
