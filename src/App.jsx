@@ -184,6 +184,17 @@ function App() {
         </div>
       </section>
 
+      {/* SECTION-08: */}
+      <section>
+        <div className="section-1">
+          <img
+            src="https://echo360.com/wp-content/uploads/2022/04/61aa7aa060dc17c03b92a0e9_iStock-1213470247-scaled.jpg"
+            alt="remote learning"
+            className="section1-image"
+          />
+        </div>
+      </section>
+
       {/* 3D scene container */}
       <div id="canvas_wrapper">
         <Scene boxRef={boxRef} />
